@@ -1,519 +1,225 @@
-/* ==========================================
-   1. VARIÁVEIS DE AMBIENTE E TEMAS
-   ========================================== */
-:root {
-  --bg-principal: #0F172A;
-  --bg-card: #1E293B;
-  --texto-principal: #F8FAFC;
-  --texto-secundario: #94A3B8;
-  --borda: #334155;
-  --cor-marca: #10B981;
-  --cor-marca-hover: #059669;
-  --cor-alerta: #EF4444;
-  
-  --cor-ruim: #EF4444;
-  --cor-medio: #F59E0B;
-  --cor-excelente: #10B981;
-}
-
-body.light-mode {
-  --bg-principal: #F1F5F9;
-  --bg-card: #FFFFFF;
-  --texto-principal: #0F172A;
-  --texto-secundario: #64748B;
-  --borda: #E2E8F0;
-  --cor-marca: #10B981;
-}
-
-/* ==========================================
-   2. RESET E CONFIGURAÇÕES GERAIS
-   ========================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  -webkit-tap-highlight-color: transparent;
+  font-family: Arial, sans-serif;
 }
 
 body {
-  background-color: var(--bg-principal);
-  color: var(--texto-principal);
-  padding-top: 75px;
-  padding-bottom: 30px;
-  transition: background-color 0.3s, color 0.3s;
+  background: #111827;
+  color: white;
+  padding: 20px;
 }
 
-.container {
-  width: 100%;
-  max-width: 480px;
-  margin: 0 auto;
-  padding: 0 16px;
-}
-
-/* ==========================================
-   3. CABEÇALHO FIXO SUPERIOR
-   ========================================== */
-.barra-superior {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 60px;
-  background-color: var(--bg-card);
-  border-bottom: 1px solid var(--borda);
+.semana-tracker {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 0 16px;
-  z-index: 1000;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  max-width: 450px;
+  margin: 0 auto 20px auto;
+  background: #1F2937;
+  padding: 10px 15px;
+  border-radius: 50px;
 }
 
-.btn-icon {
-  background: none;
-  border: none;
-  font-size: 22px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  transition: background 0.2s;
-}
-
-.btn-icon:active {
-  background: var(--borda);
-}
-
-.tracker-semanal {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.dot {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background-color: var(--bg-principal);
-  border: 2px solid var(--borda);
-  color: var(--texto-secundario);
-  font-size: 12px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.dot.ativo {
-  border-color: var(--cor-marca);
-  color: var(--texto-principal);
-  transform: scale(1.08);
-}
-
-.dot.concluido {
-  background-color: var(--cor-marca);
-  border-color: var(--cor-marca);
-  color: #FFFFFF !important;
-}
-
-/* ==========================================
-   4. NAVEGAÇÃO DOS DIAS (SETAS)
-   ========================================== */
-.topo-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 10px auto 16px auto;
-  max-width: 448px;
-  padding: 0 4px;
-}
-
-.topo-nav h2 {
-  font-size: 24px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-}
-
-.btn-seta {
-  background: var(--bg-card);
-  border: 1px solid var(--borda);
-  color: var(--texto-principal);
+.dia-dot {
   width: 38px;
   height: 38px;
-  border-radius: 12px;
-  font-size: 14px;
-  cursor: pointer;
+  border-radius: 50%;
+  background: #374151;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s;
+  font-size: 14px;
+  font-weight: bold;
+  color: #9CA3AF;
+  transition: 0.3s ease;
+  cursor: pointer;
 }
 
-.btn-seta:active {
-  background: var(--borda);
+.dia-dot:hover {
+  background: #4B5563;
+  color: white;
 }
 
-/* ==========================================
-   5. NOVO DESIGN DO CRONOGRAMA DE MATÉRIAS
-   ========================================== */
-.cronograma-container {
+.dia-dot.ativo {
+  border: 2px solid #10B981;
+  color: white;
+}
+
+.dia-dot.concluido {
+  background: #10B981;
+  color: white;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+}
+
+.home-btn {
+  background: #374151;
+  font-size: 16px;
+}
+
+.home-btn.ativo {
+  background: #10B981;
+  color: white;
+}
+
+.topo {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.task-card {
-  background-color: var(--bg-card);
-  border: 1px solid var(--borda);
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.03);
-  position: relative;
-  transition: border-color 0.3s;
-}
-
-.task-card.materia-completa {
-  border-color: var(--cor-marca);
-}
-
-.task-header {
-  margin-bottom: 12px;
-}
-
-.task-header h3 {
-  font-size: 20px;
-  font-weight: 800;
-  line-height: 1.2;
-}
-
-.task-header p {
-  font-size: 13px;
-  color: var(--texto-secundario);
-  margin-top: 2px;
-  font-weight: 500;
-}
-
-.rendimento-tag {
-  display: inline-flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 5px 12px;
-  border-radius: 10px;
-  font-size: 12px;
-  font-weight: 700;
-  margin-bottom: 16px;
-}
-.rendimento-ruim { background: rgba(239, 68, 68, 0.12); color: var(--cor-ruim); }
-.rendimento-medio { background: rgba(245, 158, 11, 0.12); color: var(--cor-medio); }
-.rendimento-excelente { background: rgba(16, 185, 129, 0.12); color: var(--cor-excelente); }
-
-/* CORREÇÃO DO LAYOUT DO CRONÔMETRO (SEGURO E BONITO) */
-.pomo-control-zone {
-  background: var(--bg-principal);
-  border: 1px solid var(--borda);
-  border-radius: 14px;
-  padding: 14px;
-  margin-bottom: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  margin-bottom: 30px;
 }
 
-.config-cronometro {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 8px;
-  width: 100%;
+.topo h1 {
+  font-size: 40px;
+  color: #10B981;
 }
 
-.select-pomo-mode {
-  background: var(--bg-card);
-  border: 1px solid var(--borda);
-  color: var(--texto-principal);
-  padding: 10px;
-  border-radius: 10px;
-  font-size: 13px;
-  font-weight: 600;
-  outline: none;
-  width: 100%;
-}
-
-.input-pomo-minutos {
-  background: var(--bg-card);
-  border: 1px solid var(--borda);
-  color: var(--texto-principal);
-  padding: 10px;
-  border-radius: 10px;
-  font-size: 13px;
-  font-weight: 700;
-  text-align: center;
-  outline: none;
-  width: 100%;
-}
-
-.btn-pomo {
-  width: 100%;
-  background-color: var(--cor-marca);
-  color: #FFFFFF;
+.topo button {
+  width: 60px;
+  height: 60px;
   border: none;
-  padding: 12px;
-  border-radius: 10px;
-  font-weight: 700;
-  font-size: 13px;
+  border-radius: 15px;
+  background: #1F2937;
+  color: white;
+  font-size: 25px;
   cursor: pointer;
-  transition: background 0.2s;
 }
 
-.btn-pomo.rodando {
-  background-color: var(--cor-alerta);
+.card {
+  background: #1F2937;
+  padding: 20px;
+  border-radius: 20px;
+  transition: 0.3s;
 }
 
-.btn-erro-trigger {
+.card.complete {
+  border: 3px solid #10B981;
+}
+
+.home-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.stat-box {
+  background: #111827;
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.stat-box h4 {
+  color: #9CA3AF;
+  font-size: 14px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.stat-box p {
+  font-size: 24px;
+  font-weight: bold;
+  color: #FACC15;
+}
+
+.task {
+  background: #111827;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 20px; 
+}
+
+.task:last-of-type {
+  margin-bottom: 0;
+}
+
+.task h3 {
+  color: #FACC15;
+  margin-bottom: 5px;
+  font-size: 32px;
+}
+
+.task p {
+  margin-bottom: 15px;
+  font-size: 22px;
+}
+
+/* NOVO: Tag do percentual de acertos por matéria */
+.rendimento-tag {
+  display: inline-block;
+  background: #374151;
+  color: #FACC15;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  margin-top: 15px;
+  font-size: 18px;
+}
+
+input {
   width: 100%;
-  background: transparent;
-  border: 1px dashed var(--borda);
-  color: var(--texto-secundario);
-  padding: 10px;
-  border-radius: 10px;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.btn-erro-trigger:active {
-  background: rgba(255,255,255,0.03);
+  padding: 15px;
+  border: none;
+  border-radius: 12px;
+  background: #374151;
+  color: white;
+  font-size: 18px;
 }
 
-/* GRID DE INPUTS DE METAS DO DIA */
 .row-tempo {
   display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
+  gap: 15px;
 }
 
 .col-tempo {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.col-tempo label {
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: var(--texto-secundario);
-  letter-spacing: 0.5px;
-}
-
-.col-tempo input {
-  background-color: var(--bg-principal);
-  border: 1px solid var(--borda);
-  color: var(--texto-principal);
-  padding: 12px;
-  border-radius: 12px;
-  font-size: 15px;
-  font-weight: 700;
-  text-align: center;
-  outline: none;
-  width: 100%;
-}
-
-.col-tempo input:focus {
-  border-color: var(--cor-marca);
-}
-
-/* FOOTER DO DIA (BARRA DE CONCLUSÃO) */
-.dia-footer-card {
-  background: var(--bg-card);
-  border: 1px solid var(--borda);
-  border-radius: 16px;
-  padding: 16px;
-  margin-top: 8px;
 }
 
 .progress {
-  background-color: var(--bg-principal);
-  border-radius: 10px;
-  height: 8px;
   width: 100%;
+  height: 16px;
+  background: #374151;
+  border-radius: 20px;
   overflow: hidden;
-  margin-bottom: 6px;
-  border: 1px solid var(--borda);
+  margin-top: 20px;
 }
 
 .progress-bar {
-  background: linear-gradient(90deg, #10B981, #34D399);
   height: 100%;
   width: 0%;
-  transition: width 0.4s ease;
+  background: #10B981;
+  transition: 0.4s;
 }
 
 .status {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--texto-secundario);
-  text-align: right;
+  margin-top: 15px;
+  font-size: 22px;
+  font-weight: bold;
 }
 
-/* WIDGET FLOATING CRONOMETRO */
-.pomo-widget {
-  position: fixed;
-  top: 68px;
-  left: 16px;
-  right: 16px;
-  background: #F59E0B;
-  color: #000000;
-  border-radius: 12px;
-  padding: 12px 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
-  z-index: 999;
-  font-weight: 700;
-  animation: slideIn 0.3s ease-out;
-}
-
-#pomo-timer {
-  font-variant-numeric: tabular-nums;
-  font-size: 18px;
-}
-
-/* ==========================================
-   6. DASHBOARD PREMIUM (HOME)
-   ========================================== */
-.home-welcome {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 10px;
-  margin-bottom: 24px;
-}
-
-.home-welcome h1 {
-  font-size: 28px;
-  font-weight: 800;
-  background: linear-gradient(135deg, #10B981 0%, #34D399 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.home-welcome p {
-  font-size: 13px;
-  color: var(--texto-secundario);
-}
-
-.home-streak-badge {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(217, 119, 6, 0.25) 100%);
-  border: 1px solid rgba(245, 158, 11, 0.3);
-  padding: 8px 14px;
-  border-radius: 14px;
-}
-
-.streak-fire-emoji {
-  font-size: 20px;
-  animation: firePulse 1.5s infinite alternate;
-}
-
-.streak-text-wrapper {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-}
-
-.streak-num { font-size: 18px; font-weight: 800; color: #F59E0B; }
-.streak-lbl { font-size: 10px; font-weight: 700; text-transform: uppercase; color: #D97706; }
-
-.card {
-  background-color: var(--bg-card);
-  border: 1px solid var(--borda);
-  border-radius: 20px;
-  padding: 20px;
-  margin-bottom: 16px;
-}
-
-.premium-card { border-left: 4px solid var(--cor-marca) !important; }
-.premium-card-header { display: flex; justify-content: space-between; align-items: center; }
-.premium-percentage-badge { background: rgba(16, 185, 129, 0.15); color: var(--cor-marca); font-size: 15px; font-weight: 800; padding: 4px 10px; border-radius: 8px; }
-.premium-card-subtitle { font-size: 12px; color: var(--texto-secundario); margin-top: -2px; margin-bottom: 14px; }
-
-.progress-container-home { background: var(--bg-principal); border-radius: 10px; height: 10px; width: 100%; overflow: hidden; border: 1px solid var(--borda); }
-.progress-bar-home { background: linear-gradient(90deg, #10B981, #34D399); height: 100%; border-radius: 10px; transition: width 0.6s ease; }
-
-.home-stats-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.stat-mini-card {
-  background: var(--bg-card);
-  border: 1px solid var(--borda);
-  border-radius: 16px;
-  padding: 16px;
-  position: relative;
-}
-
-.stat-icon-lbl { font-size: 18px; position: absolute; top: 14px; right: 14px; opacity: 0.8; }
-.stat-mini-card h4 { font-size: 11px; color: var(--texto-secundario); text-transform: uppercase; font-weight: 700; margin-bottom: 6px; }
-.stat-mini-card p { font-size: 18px; font-weight: 800; }
-.stat-mini-card p small { font-size: 11px; color: var(--texto-secundario); font-weight: 500; }
-
-.chart-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
-.accuracy-badge-large { font-size: 18px; font-weight: 800; padding: 6px 12px; border-radius: 10px; color: #FFF !important; }
-.accuracy-badge-large.rendimento-ruim { background: var(--cor-ruim); }
-.accuracy-badge-large.rendimento-medio { background: var(--cor-medio); }
-.accuracy-badge-large.rendimento-excelente { background: var(--cor-excelente); }
-
-.grafico-container { width: 100%; height: 170px; margin: 20px 0; position: relative; }
-
-.btn-caderno-erros-aba {
-  width: 100%;
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.2);
+.btn-reset {
+  background: transparent;
   color: #EF4444;
-  padding: 14px;
-  border-radius: 14px;
-  font-weight: 700;
+  border: 1px solid #EF4444;
+  padding: 8px 12px;
   font-size: 14px;
+  border-radius: 8px;
+  margin-top: 25px;
+  width: auto;
+  display: inline-block;
   cursor: pointer;
-  margin-bottom: 20px;
+  font-weight: normal;
+  transition: 0.2s;
 }
 
-.alerta-container-premium { display: flex; flex-direction: column; gap: 12px; }
-.alerta-box-premium { padding: 16px; border-radius: 16px; border: 1px solid var(--borda); background: var(--bg-card); }
-.alerta-box-premium h5 { font-size: 13px; font-weight: 700; margin-bottom: 10px; }
-.alerta-box-premium ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-.alerta-box-premium li { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; }
-.alerta-box-premium li span { font-size: 12px; opacity: 0.8; }
-.alerta-box-premium li.vazio { font-size: 12px; font-style: italic; font-weight: 500; opacity: 0.6; }
-
-.alerta-box-premium.ruim h5 { color: var(--cor-ruim); }
-.alerta-box-premium.ruim { border-left: 4px solid var(--cor-ruim); }
-.alerta-box-premium.excelente h5 { color: var(--cor-excelente); }
-.alerta-box-premium.excelente { border-left: 4px solid var(--cor-excelente); }
-
-/* ==========================================
-   7. CADERNO DE ERROS SCHEMA
-   ========================================== */
-.erro-card-item { background: var(--bg-principal); border: 1px solid var(--borda); border-radius: 14px; padding: 14px; margin-bottom: 12px; }
-.erro-card-item h5 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
-.erro-card-item p { font-size: 13px; font-style: italic; color: var(--texto-principal); margin-bottom: 10px; line-height: 1.4; }
-.btn-deletar-erro { background: none; border: none; color: var(--texto-secundario); font-size: 11px; font-weight: 600; cursor: pointer; }
-.btn-deletar-erro:active { color: var(--cor-alerta); }
-
-/* ==========================================
-   8. ANIMATIONS LIST
-   ========================================== */
-@keyframes slideIn { from { transform: translateY(-15px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-@keyframes firePulse { from { transform: scale(1); } to { transform: scale(1.1); } }
+.btn-reset:hover {
+  background: rgba(239, 68, 68, 0.1);
+}

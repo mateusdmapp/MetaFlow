@@ -1,44 +1,34 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MetaFlow</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MetaFlow PMES</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="barra-superior">
-  <button class="btn-icon" onclick="irParaHome()"></button>
-  <div class="tracker-semanal">
-    <div id="dot-home" class="dot ativo" onclick="irParaHome()"></div>
-    <div id="dot-0" class="dot" onclick="irParaDia(0)">2ª</div>
-    <div id="dot-1" class="dot" onclick="irParaDia(1)">3ª</div>
-    <div id="dot-2" class="dot" onclick="irParaDia(2)">4ª</div>
-    <div id="dot-3" class="dot" onclick="irParaDia(3)">5ª</div>
-    <div id="dot-4" class="dot" onclick="irParaDia(4)">6ª</div>
-    <div id="dot-5" class="dot" onclick="irParaDia(5)">Sá</div>
+  <!-- Menu de Navegação Superior -->
+  <div class="semana-tracker">
+    <div class="dia-dot home-btn" id="dot-home" onclick="irParaHome()"></div>
+    <div class="dia-dot" id="dot-0" onclick="irParaDia(0)">S</div>
+    <div class="dia-dot" id="dot-1" onclick="irParaDia(1)">T</div>
+    <div class="dia-dot" id="dot-2" onclick="irParaDia(2)">Q</div>
+    <div class="dia-dot" id="dot-3" onclick="irParaDia(3)">Q</div>
+    <div class="dia-dot" id="dot-4" onclick="irParaDia(4)">S</div>
+    <div class="dia-dot" id="dot-5" onclick="irParaDia(5)">S</div>
   </div>
-  <button class="btn-icon" onclick="alternarTema()"></button>
-</header>
 
-<div id="pomodoro-global" class="pomo-widget" style="display: none;">
-  <span id="pomo-label">Estudando...</span>
-  <div id="pomo-timer">00:00</div>
-</div>
+  <!-- Cabeçalho de Navegação -->
+  <div class="topo" id="topoNavegacao">
+    <button onclick="voltarDia()"></button>
+    <h1 id="tituloDia">Segunda</h1>
+    <button onclick="proximoDia()"></button>
+  </div>
 
-<div class="topo-nav" id="topoNavegacao" style="display: none;">
-  <button class="btn-seta" onclick="voltarDia()"></button>
-  <h2 id="tituloDia">Segunda</h2>
-  <button class="btn-seta" onclick="proximoDia()"></button>
-</div>
+  <!-- Conteúdo Dinâmico -->
+  <div id="conteudoDia"></div>
 
-<main class="container" id="conteudoDia">
-</main>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<script src="Meu-codigo.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>
