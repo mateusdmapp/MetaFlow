@@ -1,0 +1,27 @@
+<header class="barra-superior">
+  <button class="btn-icon" onclick="irParaHome()">🏠</button>
+  <div class="tracker-semanal">
+    <div id="dot-home" class="dot ativo" onclick="irParaHome()">📊</div>
+    <div id="dot-0" class="dot" onclick="irParaDia(0)">2ª</div>
+    <div id="dot-1" class="dot" onclick="irParaDia(1)">3ª</div>
+    <div id="dot-2" class="dot" onclick="irParaDia(2)">4ª</div>
+    <div id="dot-3" class="dot" onclick="irParaDia(3)">5ª</div>
+    <div id="dot-4" class="dot" onclick="irParaDia(4)">6ª</div>
+    <div id="dot-5" class="dot" onclick="irParaDia(5)">Sá</div>
+  </div>
+  <button class="btn-icon" onclick="alternarTema()">🌓</button>
+</header>
+
+<div id="pomodoro-global" class="pomo-widget" style="display: none;">
+  <span id="pomo-label">Estudando...</span>
+  <div id="pomo-timer">00:00</div>
+</div>
+
+<div class="topo-nav" id="topoNavegacao" style="display: none;">
+  <button class="btn-seta" onclick="voltarDia()">◀</button>
+  <h2 id="tituloDia">Segunda</h2>
+  <button class="btn-seta" onclick="proximoDia()">▶</button>
+</div>
+
+<main class="container" id="conteudoDia">
+  </main>
