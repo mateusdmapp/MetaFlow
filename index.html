@@ -1,52 +1,165 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MetaFlow Ultra - QG de Estudos</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Biblioteca de Gráficos de Alta Performance -->
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>MetaFlow Ultra</title>
+
+  <link rel="stylesheet" href="style.css" />
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body class="dark-mode">
 
-  <!-- Barra Superior Fixa -->
+  <!-- TOPO -->
+
   <header class="barra-superior">
-    <button class="btn-icon" onclick="irParaHome()"></button>
+
+    <button
+      class="btn-icon"
+      onclick="irParaHome()"
+    >
+      
+    </button>
+
     <div class="tracker-semanal">
-      <div id="dot-home" class="dot ativo" onclick="irParaHome()"></div>
-      <div id="dot-0" class="dot" onclick="irParaDia(0)">2ª</div>
-      <div id="dot-1" class="dot" onclick="irParaDia(1)">3ª</div>
-      <div id="dot-2" class="dot" onclick="irParaDia(2)">4ª</div>
-      <div id="dot-3" class="dot" onclick="irParaDia(3)">5ª</div>
-      <div id="dot-4" class="dot" onclick="irParaDia(4)">6ª</div>
-      <div id="dot-5" class="dot" onclick="irParaDia(5)">Sá</div>
+
+      <div
+        id="dot-home"
+        class="dot ativo"
+        onclick="irParaHome()"
+      >
+        
+      </div>
+
+      <div
+        id="dot-0"
+        class="dot"
+        onclick="irParaDia(0)"
+      >
+        2ª
+      </div>
+
+      <div
+        id="dot-1"
+        class="dot"
+        onclick="irParaDia(1)"
+      >
+        3ª
+      </div>
+
+      <div
+        id="dot-2"
+        class="dot"
+        onclick="irParaDia(2)"
+      >
+        4ª
+      </div>
+
+      <div
+        id="dot-3"
+        class="dot"
+        onclick="irParaDia(3)"
+      >
+        5ª
+      </div>
+
+      <div
+        id="dot-4"
+        class="dot"
+        onclick="irParaDia(4)"
+      >
+        6ª
+      </div>
+
+      <div
+        id="dot-5"
+        class="dot"
+        onclick="irParaDia(5)"
+      >
+        Sá
+      </div>
+
     </div>
-    <!-- Fogo do Streak / Ofensiva -->
-    <div class="streak-container" title="Dias seguidos batendo metas!">
-      <span id="streak-fogo"></span> <span id="streak-contador">0</span>
+
+    <div class="streak-box">
+
+      
+      <span id="streak-text">0</span>
+
     </div>
-    <button class="btn-icon" onclick="alternarTema()"></button>
+
+    <button
+      class="btn-icon"
+      onclick="alternarTema()"
+    >
+      
+    </button>
+
   </header>
 
-  <!-- Widget do Cronômetro Global Ativo -->
-  <div id="pomodoro-global" class="pomo-widget" style="display: none;">
-    <span id="pomo-label">Estudando...</span>
-    <div id="pomo-timer">00:00</div>
+  <!-- CRONÔMETRO -->
+
+  <div
+    id="pomodoro-global"
+    class="pomo-widget"
+    style="display:none;"
+  >
+
+    <span>
+       Cronômetro ativo
+    </span>
+
+    <div id="pomo-timer">
+      00:00
+    </div>
+
   </div>
 
-  <!-- Área de Navegação por Setas -->
-  <div class="topo-nav" id="topoNavegacao" style="display: none;">
-    <button class="btn-seta" onclick="voltarDia()"></button>
-    <h2 id="tituloDia">Segunda</h2>
-    <button class="btn-seta" onclick="proximoDia()"></button>
+  <!-- NAVEGAÇÃO -->
+
+  <div
+    class="topo-nav"
+    id="topoNavegacao"
+    style="display:none;"
+  >
+
+    <button
+      class="btn-seta"
+      onclick="voltarDia()"
+    >
+      
+    </button>
+
+    <h2 id="tituloDia">
+      Segunda
+    </h2>
+
+    <button
+      class="btn-seta"
+      onclick="proximoDia()"
+    >
+      
+    </button>
+
   </div>
 
-  <!-- Área Principal -->
-  <main class="container" id="conteudoDia">
-    <!-- O JavaScript injeta o Dashboard, Dias de Estudo ou Caderno de Erros aqui -->
-  </main>
+  <!-- CONTEÚDO -->
+
+  <main
+    class="container"
+    id="conteudoDia"
+  ></main>
 
   <script src="script.js"></script>
+
 </body>
+
 </html>
