@@ -2,163 +2,139 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8" />
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
+<meta charset="UTF-8">
 
-  <title>MetaFlow Ultra</title>
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+/>
 
-  <link rel="stylesheet" href="style.css" />
+<title>MetaFlow Ultra</title>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="style.css">
+
+<link
+rel="manifest"
+href="manifest.json"
+/>
+
+<meta
+name="theme-color"
+content="#071739"
+/>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body class="dark-mode">
 
-  <!-- TOPO -->
+<header class="barra-superior">
 
-  <header class="barra-superior">
+<button
+class="btn-icon"
+onclick="irParaHome()"
+>
+
+</button>
 
-    <button
-      class="btn-icon"
-      onclick="irParaHome()"
-    >
-      
-    </button>
+<div class="tracker-semanal">
 
-    <div class="tracker-semanal">
+<div
+id="dot-home"
+class="dot ativo"
+onclick="irParaHome()"
+>
+
+</div>
 
-      <div
-        id="dot-home"
-        class="dot ativo"
-        onclick="irParaHome()"
-      >
-        
-      </div>
+<div id="dot-0" class="dot" onclick="irParaDia(0)">2ª</div>
+<div id="dot-1" class="dot" onclick="irParaDia(1)">3ª</div>
+<div id="dot-2" class="dot" onclick="irParaDia(2)">4ª</div>
+<div id="dot-3" class="dot" onclick="irParaDia(3)">5ª</div>
+<div id="dot-4" class="dot" onclick="irParaDia(4)">6ª</div>
+<div id="dot-5" class="dot" onclick="irParaDia(5)">Sá</div>
 
-      <div
-        id="dot-0"
-        class="dot"
-        onclick="irParaDia(0)"
-      >
-        2ª
-      </div>
+</div>
 
-      <div
-        id="dot-1"
-        class="dot"
-        onclick="irParaDia(1)"
-      >
-        3ª
-      </div>
+<div class="streak-box">
 
-      <div
-        id="dot-2"
-        class="dot"
-        onclick="irParaDia(2)"
-      >
-        4ª
-      </div>
+
+<span id="streak-text">0</span>
 
-      <div
-        id="dot-3"
-        class="dot"
-        onclick="irParaDia(3)"
-      >
-        5ª
-      </div>
+</div>
 
-      <div
-        id="dot-4"
-        class="dot"
-        onclick="irParaDia(4)"
-      >
-        6ª
-      </div>
+<button
+class="btn-icon"
+onclick="alternarTema()"
+>
+
+</button>
 
-      <div
-        id="dot-5"
-        class="dot"
-        onclick="irParaDia(5)"
-      >
-        Sá
-      </div>
+</header>
 
-    </div>
+<div
+id="pomodoro-global"
+class="pomo-widget"
+style="display:none;"
+>
 
-    <div class="streak-box">
+<span>
+ Cronômetro ativo
+</span>
 
-      
-      <span id="streak-text">0</span>
+<div id="pomo-timer">
+00:00
+</div>
 
-    </div>
+</div>
 
-    <button
-      class="btn-icon"
-      onclick="alternarTema()"
-    >
-      
-    </button>
+<div
+class="topo-nav"
+id="topoNavegacao"
+style="display:none;"
+>
 
-  </header>
+<button
+class="btn-seta"
+onclick="voltarDia()"
+>
+
+</button>
 
-  <!-- CRONÔMETRO -->
+<h2 id="tituloDia">
+Segunda
+</h2>
 
-  <div
-    id="pomodoro-global"
-    class="pomo-widget"
-    style="display:none;"
-  >
+<button
+class="btn-seta"
+onclick="proximoDia()"
+>
+
+</button>
 
-    <span>
-       Cronômetro ativo
-    </span>
+</div>
 
-    <div id="pomo-timer">
-      00:00
-    </div>
+<main
+class="container"
+id="conteudoDia"
+>
+</main>
 
-  </div>
+<script src="script.js"></script>
 
-  <!-- NAVEGAÇÃO -->
+<script>
 
-  <div
-    class="topo-nav"
-    id="topoNavegacao"
-    style="display:none;"
-  >
+if("serviceWorker" in navigator){
 
-    <button
-      class="btn-seta"
-      onclick="voltarDia()"
-    >
-      
-    </button>
+navigator.serviceWorker.register(
+"service-worker.js"
+);
 
-    <h2 id="tituloDia">
-      Segunda
-    </h2>
+}
 
-    <button
-      class="btn-seta"
-      onclick="proximoDia()"
-    >
-      
-    </button>
-
-  </div>
-
-  <!-- CONTEÚDO -->
-
-  <main
-    class="container"
-    id="conteudoDia"
-  ></main>
-
-  <script src="script.js"></script>
+</script>
 
 </body>
 
